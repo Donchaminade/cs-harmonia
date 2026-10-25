@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 interface SchoolLogoProps {
   className?: string;
@@ -7,6 +7,7 @@ interface SchoolLogoProps {
 }
 
 export default function SchoolLogo({ className = '', size = 64, showText = false }: SchoolLogoProps) {
+  const uid = useId().replace(/:/g, '');
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <svg
@@ -15,7 +16,7 @@ export default function SchoolLogo({ className = '', size = 64, showText = false
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="drop-shadow-sm select-none"
+        className="drop-shadow-sm select-none shrink-0" role="img" aria-label="Logo du Complexe Scolaire Harmonia"
       >
         {/* Outer Gold Laurel Wreath (Represented as elegant symmetrical arcs of gold leaves) */}
         <path
@@ -63,18 +64,18 @@ export default function SchoolLogo({ className = '', size = 64, showText = false
         <circle cx="100" cy="100" r="48" stroke="#eab308" strokeWidth="1.5" fill="none" />
 
         {/* SVG Text Path for COMPLEXE SCOLAIRE curving on top */}
-        <path id="curve-top" d="M 58 100 A 42 42 0 0 1 142 100" fill="none" stroke="none" />
+        <path id={`ct${uid}`} d="M 58 100 A 42 42 0 0 1 142 100" fill="none" stroke="none" />
         <text className="font-bold fill-white tracking-widest text-[10px]" dy="-2">
-          <textPath href="#curve-top" startOffset="50%" textAnchor="middle">
+          <textPath href={`#ct${uid}`} startOffset="50%" textAnchor="middle">
             COMPLEXE SCOLAIRE
           </textPath>
         </text>
 
         {/* SVG Text Path for HARMONIA curving on bottom */}
         {/* To make text read left-to-right at the bottom, we draw the arc from right to left */}
-        <path id="curve-bottom" d="M 142 100 A 42 42 0 0 1 58 100" fill="none" stroke="none" />
+        <path id={`cb${uid}`} d="M 142 100 A 42 42 0 0 1 58 100" fill="none" stroke="none" />
         <text className="font-bold fill-white tracking-widest text-[10px]" dy="9">
-          <textPath href="#curve-bottom" startOffset="50%" textAnchor="middle">
+          <textPath href={`#cb${uid}`} startOffset="50%" textAnchor="middle">
             HARMONIA
           </textPath>
         </text>
@@ -129,13 +130,9 @@ export default function SchoolLogo({ className = '', size = 64, showText = false
         </g>
       </svg>
       {showText && (
-        <div className="flex flex-col select-none">
-          <span className="text-xl font-bold font-display tracking-tight text-brand-blue-900 leading-tight">
-            Harmonia
-          </span>
-          <span className="text-[9px] font-bold text-brand-gold-600 tracking-wider uppercase font-mono leading-none">
-            Travail - Discipline - Excellence
-          </span>
+        <div className="flex flex-col select-none whitespace-nowrap">
+          <span className="text-lg font-bold font-display tracking-tight text-navy-950 leading-tight dark:text-white">Harmonia</span>
+          <span className="text-[10px] font-semibold text-slate-600 tracking-[0.12em] uppercase leading-none dark:text-slate-300">Complexe Scolaire</span>
         </div>
       )}
     </div>

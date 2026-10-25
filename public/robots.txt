@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://csharmonia.vercel.app/sitemap.xml
