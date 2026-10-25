@@ -1,6 +1,0 @@
-{
-  "name": "Complexe Scolaire Harmonia",
-  "description": "Site officiel du Complexe Scolaire Harmonia à Lomé, Adetikopé. Excellence, Discipline et Travail pour la réussite de vos enfants.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
